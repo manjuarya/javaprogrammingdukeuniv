@@ -1,0 +1,244 @@
+Ans1. 	The encrypted message of "Can you imagine life WITHOUT the internet AND computers in your pocket?" is  
+      	Rpc ndj xbpvxct axut LXIWDJI iwt xcitgcti PCS rdbejitgh xc ndjg edrzti? 
+
+Ans2. 	The encrypted message of "Can you imagine life WITHOUT the internet AND computers in your pocket?" with 2 Key is  
+      	Xii twp duvodvz gqam EDBCWPB bcm qibzzimo VVY xwhxpbzzn dv gjcm kwxszb?
+
+Ans3. 	if (i%2 == 0) {
+         	         newChar = shiftedAlphabet1.charAt(idx);
+     	 }
+     	 else {
+	         newChar = shiftedAlphabet2.charAt(idx);
+	      } 
+
+
+Ans4. 	Consider the file errors.txt. What is the most common word length Ans = 4.
+
+Ans5.  	Consider the file manywords.txt. What is the most common word length Ans = 7.
+
+Ans6. 	The maxIndex value is   14
+                  The key1 is 10
+	The maxIndex value is   11
+	The key2 is 7
+	The decrypted message with 2 Key (12 & 2) is  Xyi simxmeec eedi sw Aeme arw Sro
+	this is not a correct answer. the correct answer is down-
+	The encrypted message with 2 Key is  The original name of Java was Oak
+
+Ans7. 	The decrypted message of with 2 Key( 7 & 19 ) Aal uttx hm aal Qtct Fhljha pl Wbdl. Pvxvxlx! is 
+           	The name of the Java Mascot is Duke. Woeoeee!
+	What is the original message? Ans The name of the Java Mascot is Duke. Woeoeee!
+
+Ans8. 	What are the first five decrypted words? Ans. Duke Computer Science Department Overview
+
+Ans9.	What are the two keys used to encrypt it? Ans. ( 9,22 )
+
+Ans10. 	As key1 and key2 of type int, which are parameters to the constructor.
+
+Ans11. 	public
+
+Ans12.	It should not have a return type.
+
+Ans13. 	blueblueblue is blue repeated
+
+Ans14.	A compile error occurs when compiling this class, because mystery is private and cannot be called by the TestSimple class.
+
+
+
+6.Question 6
+The following phrase was encrypted with the two-key encryption method we discussed using the two keys 14 and 24. What is the decrypted message?
+
+Hfs cpwewloj loks cd Hoto kyg Cyy.
+
+(Note: Spacing and punctuation should be preserved in your answer.)
+
+Incorrect  (The original name of Java was Oak)
+
+The maxIndex value is   14
+                  The key1 is 10
+	The maxIndex value is   11
+	The key2 is 7
+	The decrypted message with 2 Key (12 & 2) is  Xyi simxmeec eedi sw Aeme arw Sro
+	this is not a correct answer. the correct answer is down-
+	The encrypted message with 2 Key is  The original name of Java was Oak
+
+
+9.Question 9
+Decrypt the encrypted file mysteryTwoKeysQuiz.txt.
+
+This file is encrypted with the two-key encryption method we discussed. You’ll need to decrypt the complete file by figuring out which keys were used to decrypt it.
+
+What are the two keys used to encrypt it?
+
+Note: Enter your answer as firstkey,secondkey with no spaces, for example:
+
+1,2
+
+Incorrect  ( 9,22 )
+
+
+11.Question 11
+Should the halfOfString method in the TestCaesarCipherTwo class be public or private?
+
+Incorrect  (public)
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Cryptography
+LATEST SUBMISSION GRADE
+78.57%
+
+1.Question 1
+Encrypt the following phrase with the Caesar Cipher algorithm, using key 15.
+
+Can you imagine life WITHOUT the internet AND computers in your pocket?
+
+What is the encrypted string?
+
+(Note: Spacing and punctuation should be preserved in your encrypted message.)
+
+Correct
+1 / 1 point
+
+2.Question 2
+Encrypt the following phrase with the algorithm described for using two Caesar Cipher keys, with key1 = 21 and key2 = 8.
+
+Can you imagine life WITHOUT the internet AND computers in your pocket?
+
+What is the encrypted string?
+
+(Note: Spacing and punctuation should be preserved in your encrypted message.)
+
+Correct
+1 / 1 point
+
+3.Question 3
+Consider the Caesar Cipher two-key algorithm described in this course. Every other character, starting with the first, will use the Caesar Cipher algorithm with key1, and every other character, starting with the second, will use the Caesar Cipher algorithm with key2.
+
+Assume shiftedAlphabet1 is the shifted alphabet using key1 and shiftedAlphabet2 is the shifted alphabet using key2, both are of type String.
+
+If i is the location of the current character in the message, and idx is the integer variable of the location of the current character in the original alphabet, which one of the following segments of code correctly gets the corresponding encrypted character?
+
+Correct
+1 / 1 point
+
+4.Question 4
+Consider the file errors.txt.
+
+What is the most common word length (ignoring the punctuation of the first and last character of each group of characters)?
+
+Correct
+1 / 1 point
+
+5.Question 5
+Consider the file manywords.txt.
+
+What is the most common word length (ignoring the punctuation of the first and last character of each group of characters)?
+
+Correct
+1 / 1 point
+
+6.Question 6
+The following phrase was encrypted with the two-key encryption method we discussed using the two keys 14 and 24. What is the decrypted message?
+
+Hfs cpwewloj loks cd Hoto kyg Cyy.
+
+(Note: Spacing and punctuation should be preserved in your answer.)
+
+Incorrect
+0 / 1 point
+
+7.Question 7
+The following phrase was encrypted with the two-key encryption method described in this course. You will need to figure out which keys were used to encrypt it.
+
+Aal uttx hm aal Qtct Fhljha pl Wbdl. Pvxvxlx!
+
+What is the original message?
+
+(Note: Spacing and punctuation should be preserved in your answer.)
+
+Correct
+1 / 1 point
+
+8.Question 8
+Decrypt the encrypted file mysteryTwoKeysQuiz.txt.
+
+This file is encrypted with the two-key encryption method we discussed. You’ll need to decrypt the complete file by figuring out which keys were used to decrypt it.
+
+What are the first five decrypted words?
+
+(Note: Spacing and punctuation should be preserved in your answer.)
+
+Correct
+1 / 1 point
+
+9.Question 9
+Decrypt the encrypted file mysteryTwoKeysQuiz.txt.
+
+This file is encrypted with the two-key encryption method we discussed. You’ll need to decrypt the complete file by figuring out which keys were used to decrypt it.
+
+What are the two keys used to encrypt it?
+
+Note: Enter your answer as firstkey,secondkey with no spaces, for example:
+
+1,2
+
+Incorrect
+0 / 1 point
+
+10.Question 10
+Which of the following is the best choice for adding additional private fields to the CaesarCipherTwo class created in the last lesson to make it easier to call decrypt on a string that was encrypted using an object of this class?
+
+Correct
+1 / 1 point
+
+11.Question 11
+Should the halfOfString method in the TestCaesarCipherTwo class be public or private?
+
+Incorrect
+0 / 1 point
+
+12.Question 12
+Consider the following two classes Simple and TestSimple for the remaining questions.
+
+
+
+Why is there no return type for the method Simple?
+
+Correct
+1 / 1 point
+
+13.Question 13
+
+
+What is printed when the print method in TestSimple is called?
+
+Correct
+1 / 1 point
+
+14.Question 14
+
+
+Suppose the following line is added as the last line in the print method of the class TestSimple.
+
+
+How does this line affect what happens with the code in the print method?
+
+Correct
+
+
+
+
+
+
+
+
+
+
+
+
+
+

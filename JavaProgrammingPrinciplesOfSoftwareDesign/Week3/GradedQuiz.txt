@@ -1,0 +1,62 @@
+1. Suppose the line  markov.setRandom(18); is put between lines 7 and 8, 
+
+Ans. Each of three randomly generated texts will all be identical.
+
+2. runMarkovZero method, set the random seed to 1024 and run this method on the file confucius.txt.
+What is the first line of text output when this program runs?
+
+Ans.  eeuefmespwhsfoyu, s giowhersa eell; bma s.7shni:.at.ttdr.w aknf 
+
+3. In the Tester class, run the program testGetFollowsWithFile with the string “o” and the file confucius.txt.
+What is the size of the ArrayList of characters that follow “o”?
+
+Ans. 10453
+
+4. In the Tester class, run the program testGetFollowsWithFile with the string “he” and the file confucius.txt.
+What is the size of the ArrayList of characters that follow “he”?
+
+Ans. 3715
+
+5. After the completion of the MarkovOne class to generate random text by finding all the characters that follow 
+one character, set the random seed in the runMarkovOne method in the MarkovRunner class to 365. 
+Then run runMarkovOne on the file romeo.txt.
+What is the first line generated?
+
+Ans.  y O wirs bloay Ger. fo. tifthy The, A My; st- ie d, s. bloulate, 
+
+6. After the completion of the MarkovFour class to generate random text by finding all the characters that follow 
+four characters, set the random seed in the runMarkovFour method in the MarkovRunner class to 715. Then run 
+runMarkovFour on the file romeo.txt
+What is the first line of text generated?
+
+Ans.  man in a green, for that haste, for a foot in her from Tybalt! 
+
+7. After the completion of the MarkovModel class to generate random text by finding all the characters that follow 
+N characters, set the random seed in the runMarkovModel method in the MarkovRunner class to 953 and pass in 
+N as 7. Then run runMarkovModel on the file romeo.txt.
+What is the first line of text generated?
+
+Ans. e uncle Capulet's orchard. Enter an officer, and light- more 
+
+8. For the class EfficientMarkovModel, which one of the following is the best place to call the buildMap method?
+
+Ans.  In the constructor. OR  In the getRandomText method before the for loop.
+
+9. In the EfficientMarkovModel class, comment out the print statements in the printHashMapInfo method that 
+prints out the map. Make sure printHashMapInfo is called right after the HashMap is built. Then in the 
+MarkovRunnerWithInterface class call the runModel method on an EfficientMarkovModel of order 6 with 
+seed 792 on the file confucius.txt.
+How many keys are in the HashMap?
+
+Ans. 70162
+
+10. In the EfficientMarkovModel class, comment out the print statements in the printHashMapInfo method that 
+prints out the map. Make sure printHashMapInfo is called right after the HashMap is built. Then in the 
+MarkovRunnerWithInterface class call the runModel method on an EfficientMarkovModel of order 5 with 
+seed 531 on the file confucius.txt.
+What was the size of the largest ArrayList in the HashMap?
+
+Ans. The maximum value is: 1549  & its key:  the 
+
+
+

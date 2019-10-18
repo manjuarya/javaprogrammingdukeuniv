@@ -1,0 +1,54 @@
+1.Question 1
+What is the perimeter of the shape made from the file datatest4.txt whose contents are shown below 
+(just give to two decimal places)?
+Ans  
+
+2.Question 2
+What is the average length of a side in the shape made from the file datatest1.txt whose contents are shown below
+(just give to two decimal places)?
+
+Ans  
+
+3.Question 3
+What is the longest side in the shape made from the file datatest1.txt whose contents are shown below 
+(just give to two decimal places)?
+Ans    
+
+
+4.Question 4
+What is the largest perimeter of a shape made from the shapes in files dataset1.txt, dataset2.txt, dataset3.txt, 
+dataset4.txt, dataset5.txt, and dataset6.txt (just give to two decimal places)?
+
+Ans  
+
+5.Question 5
+What is the name of the file that has the shape with the largest perimeter from the four files example1.txt, 
+example2.txt, example3.txt and example4.txt?
+
+Ans  
+
+6.Question 6
+The method getNumPoints returns the number of points in a Shape s.
+
+Which one of the following is NOT a correct implementation of getNumPoints?
+Ans  
+
+
+7.Question 7
+Consider the following code for the function mysteryShape that has one parameter a Shape s and calls the 
+function getNumPoints from the assignment.
+Which one of the following best describes the purpose of this function?
+
+Ans  
+The function computes the percentage of those points from the Shape s that have a positive X and a negative Y.
+
+
+The function computes the sum of those points from the Shape s that have a positive X or a negative Y.
+
+
+The function computes the percentage of those points from the Shape s that have a positive X or a negative Y.
+
+
+The function computes the sum of those points from the Shape s that have a positive X and a negative Y.
+
+

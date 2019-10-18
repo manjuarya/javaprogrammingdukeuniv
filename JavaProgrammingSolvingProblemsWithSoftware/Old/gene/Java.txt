@@ -1,0 +1,183 @@
+-----------------------------------------------------------------------
+          FIND OUT THE VALID GENE FROM THE STRING
+-----------------------------------------------------------------------
+
+
+/**
+ * Write a description of ManyGenes here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+import java.util.Scanner; 
+
+public class ManyGenes {
+    
+public int FindStopCodon(String a,int startIndex, String Codon) {
+    int currIndex = a.indexOf(Codon, startIndex+2);
+    while (currIndex != -1) {
+        int diff = currIndex - startIndex;
+        if (diff%3 == 0) {
+            return currIndex;
+        }
+        else {
+            currIndex = a.indexOf(Codon, currIndex + 2);
+        }
+    }
+    System.out.println("There is no "+ Codon);  
+    return a.length();
+    //return currIndex;
+}
+
+public void main() {
+    Scanner reader = new Scanner(System.in);
+    System.out.println("Enter the string here: ");
+    String dna = reader.next();
+    int startIndex = dna.indexOf("ATG");
+    if (startIndex == -1) {
+        System.out.println("There is no start codon");
+    }
+    int stopIndextaa = FindStopCodon(dna, startIndex,"TAA");
+    int stopIndextag = FindStopCodon(dna, startIndex,"TAG");
+    int stopIndextga = FindStopCodon(dna, startIndex,"TGA");
+    if (stopIndextaa == -1 && stopIndextag == -1 && stopIndextga == -1) {
+        System.out.println("There is no stop codon TTA, TAG & TGA in this string");
+    }
+    int temp = Math.min(stopIndextaa, stopIndextag);
+    int minIndex = Math.min(temp, stopIndextga);
+    String result = dna.substring(startIndex, minIndex+3);    
+    System.out.println(result);
+}
+}
+
+*************************END**********************************************************************
+
+--------------------------------------------------------------------------------------------------
+DIFFERENT CODON GENES AND WHICH HAVING SHORTER LENGTH IS THE VALID GENE
+--------------------------------------------------------------------------------------------------
+
+
+/**
+ * Write a description of ManyGenes here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+import java.util.Scanner; 
+
+public class ManyGenes {
+    
+public int FindStopCodon(String a,int startIndex, String Codon) {
+    Scanner reader = new Scanner(System.in);
+    int currIndex = a.indexOf(Codon, startIndex+2);
+    System.out.println("shifting currIndex before whileloop: " + currIndex);
+    reader.next();
+    while (currIndex != -1) {
+        int diff = currIndex - startIndex;
+        System.out.println("diff under whileloop: " + diff);
+        reader.next();
+        if (diff%3 == 0) {
+            System.out.println( Codon + " gene is: " + a.substring(startIndex, currIndex + 3));
+            return currIndex;
+        }
+        else {
+            currIndex = a.indexOf(Codon, currIndex + 2);
+            System.out.println("shifting start index" + startIndex + 
+            "and current index: " +currIndex);
+            reader.next();
+        }
+    }
+    System.out.println("There is no "+ Codon);  
+    return a.length();
+    //return currIndex;
+}
+
+public void main() {
+    Scanner reader = new Scanner(System.in);
+    System.out.println("Enter the string here: ");
+    String dna = reader.next();
+    int startIndex = dna.indexOf("ATG"); 
+    System.out.println("The start index is: " + startIndex);
+    if (startIndex == -1) {
+        System.out.println("There is no start codon");
+    }
+    int stopIndextaa = FindStopCodon(dna, startIndex,"TAA");    
+    int stopIndextag = FindStopCodon(dna, startIndex,"TAG");
+    int stopIndextga = FindStopCodon(dna, startIndex,"TGA");
+    if (stopIndextaa == -1 && stopIndextag == -1 && stopIndextga == -1) {
+        System.out.println("There is no stop codon TTA, TAG & TGA in this string");
+    }
+    int temp = Math.min(stopIndextaa, stopIndextag);
+    int minIndex = Math.min(temp, stopIndextga);
+    String result = dna.substring(startIndex, minIndex+3);    
+    System.out.println("The valid gene is:" + result);
+}
+}
+
+
+************************************END***************************************************
+
+------------------------------------------------------------------------------------------
+FIND OUT SHAPE PERIMETER  (DUKE MADE)
+------------------------------------------------------------------------------------------
+
+import edu.duke.*;
+
+public class PerimeterRunner {
+    public double getPerimeter (Shape s) {
+        // Start with totalPerim = 0
+        double totalPerim = 0.0;
+        // Start wth prevPt = the last point 
+        Point prevPt = s.getLastPoint();
+        // For each point currPt in the shape,
+        for (Point currPt : s.getPoints()) {
+            // Find distance from prevPt point to currPt 
+            double currDist = prevPt.distance(currPt);
+            // Update totalPerim by currDist
+            totalPerim = totalPerim + currDist;
+            // Update prevPt to be currPt
+            prevPt = currPt;
+        }
+        // totalPerim is the answer
+        return totalPerim;
+    }
+
+    public void testPerimeter () {
+        FileResource fr = new FileResource();
+        Shape s = new Shape(fr);
+        double length = getPerimeter(s);
+        System.out.println("perimeter = " + length);
+    }
+
+    public static void main (String[] args) {
+        PerimeterRunner pr = new PerimeterRunner();
+        pr.testPerimeter();
+    }
+}
+
+
+
+
+************************************END***************************************************
+
+------------------------------------------------------------------------------------------
+FIND DISTANCE OF TWO POINT
+------------------------------------------------------------------------------------------
+
+public class Distance {
+   
+
+    public void testDist () {
+        Point P1 = new Point (2, 4);
+        Point P2 = new Point (-2, 4);
+        double dist = P2.distance(P1);
+        System.out.println (dist);
+    }
+}
+
+************************************END***************************************************
+
+------------------------------------------------------------------------------------------
+FIND OUT SHAPE PERIMETER MANJU
+------------------------------------------------------------------------------------------
+

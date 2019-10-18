@@ -1,0 +1,758 @@
+-----------------------------------------------------------------------
+ FIRST CSV EXAMPLE TO PRINT ALL THE COLOUM AND ROW OF A MSEXCEL
+-----------------------------------------------------------------------
+
+import edu.duke.*;
+import org.apache.commons.csv.*;
+
+public class CsvExample {
+    public void readFood () {
+        FileResource fr = new FileResource();
+        CSVParser parser = fr.getCSVParser();
+        for ( CSVRecord record : parser) {
+            System.out.print ( record.get("Name") + "  ");
+            System.out.print ( record.get("Favorite Color") + "  ");
+            System.out.println ( record.get("Favorite Food"));
+        }
+    }
+    
+}
+
+
+*************************END**********************************************************************
+
+--------------------------------------------------------------------------------------------------
+                            FIND OUT WHICH COUNTRY EXPORT COFFEE
+--------------------------------------------------------------------------------------------------
+
+
+/**
+ * Write a description of WhichCountryExportCoffee here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+import edu.duke.*;
+import org.apache.commons.csv.*;
+
+public class WhichCountryExportCoffee {
+    public void listExporters ( CSVParser parser, String ExportOfIntrest) {
+        for ( CSVRecord record : parser) {
+            String export = record.get ("Exports");
+            if ( export.contains(ExportOfIntrest)) {
+                String country = record.get("Country");
+                System.out.println ( country );
+            }
+        }
+    }
+    public void whoExportCoffee() {
+        FileResource fr = new FileResource();
+        CSVParser parser = fr.getCSVParser();
+        listExporters ( parser, "coffee");
+    }
+   
+}
+
+*************************END**********************************************************************
+
+--------------------------------------------------------------------------------------------------
+                            FIND OUT WHICH COUNTRY EXPORT COFFEE AND TEA
+--------------------------------------------------------------------------------------------------
+
+
+import edu.duke.*;
+import org.apache.commons.csv.*;
+
+public class WhoExport {
+    public void listExporters ( CSVParser parser, String ExportItem1, String ExportItem2) {
+        for ( CSVRecord record : parser) {
+            String export = record.get ("Exports");
+            if ( export.contains(ExportItem1) && export.contains(ExportItem2)) {
+                String country = record.get("Country");
+                System.out.println ( country );
+            }
+        }
+    }
+    public void whoExportCoffee() {
+        FileResource fr = new FileResource();
+        CSVParser parser = fr.getCSVParser();
+        listExporters ( parser, "coffee", "tea");
+    }
+   
+}
+
+
+*************************END**********************************************************************
+
+--------------------------------------------------------------------------------------------------
+                            TOTAL EXPORT CSV
+--------------------------------------------------------------------------------------------------
+
+package FirstCSVExample;
+
+
+/**
+ * Write a description of WhoExport here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+
+import edu.duke.*;
+import org.apache.commons.csv.*;
+
+public class WhoExport {
+    public void listExporters ( CSVParser parser, String ExportItem1, String ExportItem2) {
+        for ( CSVRecord record : parser) {
+            String export = record.get ("Exports");
+            if ( export.contains(ExportItem1) && export.contains(ExportItem2)) {
+                String country = record.get("Country");
+                System.out.println ( country );
+            }
+        }
+    }
+    
+    public void countryInfo ( CSVParser parser, String countryName ) {
+        for ( CSVRecord record : parser) {
+            String countryDetail = record.get ("Country");
+            if ( countryDetail.contains(countryName)) {
+                //String countr = record.get("Country");
+                System.out.println ("I m in Loop");
+                System.out.println ( record.get("Country")+" "+record.get("Exports")+" "+ record.get("Value (dollars)") );
+                //System.out.println ( record.get("Country")+" "+record.get("Exports"));
+            }
+        }
+    }
+    
+    public void numberOfExporters (CSVParser parser, String exportItem) {
+        int count = 0;
+        for ( CSVRecord record : parser) {
+            String export = record.get ("Exports");
+            if ( export.contains(exportItem)) {
+                String country = record.get("Country");
+                System.out.println ( country );
+                count = count + 1;
+            }
+            //System.out.println ( "There is no Item in the list" );
+        }
+        //System.out.println ( "There is no Item in the list" );
+        System.out.println ( "There are total " + count +"   countries which export "+ exportItem );
+    }
+    
+    public void bigExporters ( CSVParser parser, String amount ) {
+        for ( CSVRecord record : parser ) {
+            String value = record.get("Value (dollars)");
+            int amt = amount.length();
+            int val = value.length();
+            System.out.println("amt " + amt);
+            System.out.println("val " + val);
+            if ( val > amt) {
+                System.out.println(record.get("Country") + "   " + record.get("Value (dollars)"));
+            }
+        }
+    }
+    
+    public void whoExportCoffee() {
+        FileResource fr = new FileResource();
+        CSVParser parser = fr.getCSVParser();
+        //listExporters ( parser, "gold", "diamonds");
+        //countryInfo ( parser, "Madagascar");
+        //numberOfExporters (parser, "gold");
+        bigExporters ( parser, "$999,999,999" );
+    }
+   
+}
+
+
+
+*************************END**********************************************************************
+
+--------------------------------------------------------------------------------------------------
+                            FIND OUT MAXIMUM TEMPERATURE IN A DAY                           
+--------------------------------------------------------------------------------------------------
+
+
+package FirstCSVExample;
+
+
+/**
+ * Write a description of hottestHourInDay here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+import edu.duke.*;
+import org.apache.commons.csv.*;
+import java.io.*;
+
+public class hottestHourInDay {
+    public CSVRecord hottestHourInFile (CSVParser parser) {
+        CSVRecord largestSoFar = null;
+        for ( CSVRecord currentRow : parser) {
+            if ( largestSoFar == null) {
+                largestSoFar = currentRow;
+            }
+            else {
+                double currentTemp = Double.parseDouble( currentRow.get("TemperatureF"));
+                double largestTemp = Double.parseDouble( largestSoFar.get("TemperatureF"));
+                if ( currentTemp > largestTemp) {
+                    largestSoFar = currentRow;
+                } 
+            }
+        }
+        return largestSoFar;
+    }
+    
+    public void testHottestInDay () {
+        //FileResource fr = new FileResource ("C:/Users/Avinash Arya/Desktop/Manju New Job/Java/CSV/TemperatureData/2015/weather-2015-01-01.csv");
+        //CSVRecord largest = hottestHourInFile(fr.getCSVParser());
+        //System.out.println ("Hottest temperature was " + largest.get("TemperatureF") + " at " + largest.get("TimeEST") );
+    }
+
+*************************END**********************************************************************
+
+--------------------------------------------------------------------------------------------------
+                          HOTTEST DAY IN MANY DAYS                    
+--------------------------------------------------------------------------------------------------
+
+package FirstCSVExample;
+
+
+/**
+ * Write a description of hottestHourInManyDays here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+import edu.duke.*;
+import org.apache.commons.csv.*;
+import java.io.*;
+
+public class hottestHourInManyDays {
+    public CSVRecord hottestHourInFile (CSVParser parser) {
+        CSVRecord largestSoFar = null;
+        for ( CSVRecord currentRow : parser) {
+            if ( largestSoFar == null) {
+                largestSoFar = currentRow;
+            }
+            else {
+                double currentTemp = Double.parseDouble( currentRow.get("TemperatureF"));
+                double largestTemp = Double.parseDouble( largestSoFar.get("TemperatureF"));
+                if ( currentTemp > largestTemp) {
+                    largestSoFar = currentRow;
+                } 
+            }
+        }
+        return largestSoFar;
+    }
+    
+    public CSVRecord hottestInManyDays() {
+        CSVRecord largestTempInFiles = null;
+        DirectoryResource dr = new DirectoryResource();
+        for (File f : dr.selectedFiles()) {
+            FileResource fr = new FileResource (f);
+            CSVRecord currentFile = hottestHourInFile(fr.getCSVParser());
+            if (largestTempInFiles == null) {
+                largestTempInFiles = currentFile;
+            }
+            else {
+                double currentTemp = Double.parseDouble( currentFile.get("TemperatureF"));
+                double largestTemp = Double.parseDouble( largestTempInFiles.get("TemperatureF"));
+                if ( currentTemp > largestTemp) {
+                    largestTempInFiles = currentFile;
+                }
+            }
+        }
+        return largestTempInFiles;
+    }
+    
+    public void testHottestTempInManyDays() {
+        CSVRecord largestTempInFiles = hottestInManyDays();        
+        System.out.println ("Hottest temperature was " + 
+                             largestTempInFiles.get("TemperatureF") + 
+                             " at " + largestTempInFiles.get("TimeEST")+ 
+                             " on " + largestTempInFiles.get("DateUTC") );
+    }
+    
+    
+    //public void testHottestInDay () {
+        //FileResource fr = new FileResource ("C:/Users/Avinash Arya/Desktop/Manju New Job/Java/CSV/TemperatureData/2015/weather-2015-02-01.csv");
+        //CSVRecord largest = hottestInManyDays(fr.getCSVParser());
+        //System.out.println ("Hottest temperature was " + largest.get("TemperatureF") + " at " + largest.get("DateUTC") );
+    //}
+    
+}
+
+
+*************************END**********************************************************************
+
+--------------------------------------------------------------------------------------------------
+                            HOTTEST DAY IN MANY DAYS (WITH ONE FUNCTION getlargestOfTwo)                  
+--------------------------------------------------------------------------------------------------
+
+package FirstCSVExample;
+
+
+/**
+ * Write a description of hottestTempWithgetLargetOfTwo here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+
+import edu.duke.*;
+import org.apache.commons.csv.*;
+import java.io.*;
+
+public class hottestTempWithgetLargetOfTwo {
+    public CSVRecord getLargestOfTwo( CSVRecord currentRow, CSVRecord largestSoFar ) {
+        if ( largestSoFar == null) {
+                largestSoFar = currentRow;
+            }
+            else {
+                double currentTemp = Double.parseDouble( currentRow.get("TemperatureF"));
+                double largestTemp = Double.parseDouble( largestSoFar.get("TemperatureF"));
+                if ( currentTemp > largestTemp) {
+                    largestSoFar = currentRow;
+                } 
+        }
+        return largestSoFar;
+    }
+    
+    public CSVRecord hottestHourInFile (CSVParser parser) {
+        CSVRecord largestSoFar = null;
+        for ( CSVRecord currentRow : parser) {
+            largestSoFar = getLargestOfTwo( currentRow, largestSoFar );
+        }
+        return largestSoFar;
+    }
+    
+    public CSVRecord hottestInManyDays() {
+        CSVRecord largestTempInFiles = null;
+        DirectoryResource dr = new DirectoryResource();
+        for (File f : dr.selectedFiles()) {
+            FileResource fr = new FileResource (f);
+            CSVRecord currentFile = hottestHourInFile(fr.getCSVParser());
+            largestTempInFiles = getLargestOfTwo( currentFile, largestTempInFiles );
+            System.out.println( "The largest temp of the file  " + f.getName() + "  is  " + largestTempInFiles.get("TemperatureF"));
+        }
+        return largestTempInFiles;
+    }
+    
+    public void testHottestTempInManyDays() {
+        CSVRecord largestTempInFiles = hottestInManyDays();        
+        System.out.println ("Hottest temperature was " + 
+                             largestTempInFiles.get("TemperatureF") + 
+                             " at " + largestTempInFiles.get("TimeEST")+ 
+                             " on " + largestTempInFiles.get("DateUTC") );
+    }
+    
+    
+    //public void testHottestInDay () {
+        //FileResource fr = new FileResource ("C:/Users/Avinash Arya/Desktop/Manju New Job/Java/CSV/TemperatureData/2015/weather-2015-02-01.csv");
+        //CSVRecord largest = hottestInManyDays(fr.getCSVParser());
+        //System.out.println ("Hottest temperature was " + largest.get("TemperatureF") + " at " + largest.get("DateUTC") );
+    //}
+    
+}
+
+
+
+
+*************************END**********************************************************************
+
+--------------------------------------------------------------------------------------------------
+                            COLDEST HOUR IN FILES                  
+--------------------------------------------------------------------------------------------------
+
+
+package FirstCSVExample;
+
+
+/**
+ * Write a description of coldestHour here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ *
+ */
+
+import edu.duke.*;
+import org.apache.commons.csv.*;
+import java.io.*;
+
+public class coldestHour {
+    public CSVRecord getColdestOfTwo( CSVRecord currentRow, CSVRecord coldestSoFar ) {
+        if ( coldestSoFar == null) {
+                coldestSoFar = currentRow;
+            }
+            else {
+                double currentTemp = Double.parseDouble( currentRow.get("TemperatureF"));
+                double coldestTemp = Double.parseDouble( coldestSoFar.get("TemperatureF"));
+                if ( currentTemp < coldestTemp) {
+                    coldestSoFar = currentRow;
+                } 
+        }
+        return coldestSoFar;
+    }
+    
+    
+    public CSVRecord coldestInManyDays() {
+        CSVRecord coldestTempInFiles = null;
+        DirectoryResource dr = new DirectoryResource();
+        for (File f : dr.selectedFiles()) {
+            FileResource fr = new FileResource (f);
+            CSVRecord currentFile = coldestHourInFile(fr.getCSVParser());
+            coldestTempInFiles = getColdestOfTwo( currentFile, coldestTempInFiles );
+            System.out.println( "The coldest temp of the file  " + f.getName() + "  is  " + currentFile.get("TemperatureF"));
+        }
+        return coldestTempInFiles;
+    }
+        
+       
+    public CSVRecord coldestHourInFile (CSVParser parser) {
+        CSVRecord lowestSoFar = null;
+        for ( CSVRecord currentRow : parser) {
+            lowestSoFar = getColdestOfTwo( currentRow, lowestSoFar );
+        }
+        return lowestSoFar;
+    }
+    
+    
+    public void testColdestTempInManyDays() {
+        CSVRecord coldestTempInFiles = coldestInManyDays();        
+        System.out.println ("coldest temperature was " + 
+                             coldestTempInFiles.get("TemperatureF") + 
+                             " at " + coldestTempInFiles.get("TimeEST")+ 
+                             " on " + coldestTempInFiles.get("DateUTC") );
+    }
+}
+
+
+
+
+
+*************************END**********************************************************************
+
+--------------------------------------------------------------------------------------------------
+                           LOWEST HUMIDITY IN A DAY/FILE                   
+--------------------------------------------------------------------------------------------------
+
+package FirstCSVExample;
+
+
+/**
+ * Write a description of lowestHumidity here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+import edu.duke.*;
+import org.apache.commons.csv.*;
+import java.io.*;
+
+public class lowestHumidity {
+    public CSVRecord lowestHumidityInFile(CSVParser parser) {
+        CSVRecord lowestSoFar = null;
+        for (CSVRecord currentRow : parser) {
+            if (lowestSoFar == null) {
+                lowestSoFar = currentRow;
+            } 
+            else {
+                int lowHum = Integer.parseInt (lowestSoFar.get("Humidity"));
+                int currHum = Integer.parseInt (currentRow.get("Humidity"));
+                if (lowHum > currHum) {
+                    lowestSoFar = currentRow;
+                }
+            }
+        }
+        return lowestSoFar;
+    }
+    
+    public void testlowestHumidity () {
+        FileResource fr = new FileResource();
+        CSVRecord lowestHumidity = lowestHumidityInFile(fr.getCSVParser());
+        System.out.println("The lowest humidity was " + lowestHumidity.get("Humidity") + " at  " +
+                            lowestHumidity.get("TimeEST") + "  " +lowestHumidity.get("DateUTC"));
+    } 
+}
+
+
+*************************END**********************************************************************
+
+--------------------------------------------------------------------------------------------------
+                                     LOWEST HUMIDITY OF MANY DAYS/FILES          
+--------------------------------------------------------------------------------------------------
+
+package FirstCSVExample;
+  
+
+/**
+ * Write a description of lowestHumidity here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+import edu.duke.*;
+import org.apache.commons.csv.*;
+import java.io.*;
+
+public class lowestHumidity {
+    public CSVRecord getLowestOfTwo(CSVRecord curr, CSVRecord lowHum) {
+        if (lowHum == null) {
+            lowHum = curr;
+        }
+        else {
+            int ValuelowHum = Integer.parseInt( lowHum.get("Humidity"));
+            if (!curr.get("Humidity").equals("N/A")) { 
+                System.out.println("The value of current humidity is  " + curr.get("Humidity"));
+                int Valuecurr = Integer.parseInt( curr.get("Humidity"));
+                if (Valuecurr < ValuelowHum) {
+                    lowHum = curr;
+                }
+            }
+        }
+        return lowHum;
+    }
+    
+    public CSVRecord lowestHumidityInManyDays () {
+        CSVRecord lowestHum = null;
+        DirectoryResource dr = new DirectoryResource();
+        for (File f : dr.selectedFiles()) {
+            FileResource fr = new FileResource(f);
+            CSVRecord currFileHum = lowestHumidityInFile(fr.getCSVParser());
+            lowestHum = getLowestOfTwo(currFileHum, lowestHum);
+            System.out.println("The lowest humidity was  " + currFileHum.get("Humidity") + "   of file  " + f.getName() +" at  " +currFileHum.get("DateUTC"));
+        }
+        return lowestHum;
+    }
+            
+    
+    public CSVRecord lowestHumidityInFile(CSVParser parser) {
+        CSVRecord lowestSoFar = null;
+        for (CSVRecord currRow : parser) {
+            lowestSoFar = getLowestOfTwo(currRow, lowestSoFar);
+        }
+        return lowestSoFar;
+    }
+    
+    
+    public void testlowestHumidity () {
+        CSVRecord lowestHumidity = lowestHumidityInManyDays();
+        System.out.println("The lowest humidity of all files was " + lowestHumidity.get("Humidity") + " at  " +
+                            lowestHumidity.get("TimeEST") + "  " +lowestHumidity.get("DateUTC")
+                            );
+    } 
+}
+
+
+*************************END**********************************************************************
+
+--------------------------------------------------------------------------------------------------
+                                  THE AVERAGE TEMPERATURE OF A FILE           
+--------------------------------------------------------------------------------------------------
+
+package FirstCSVExample;
+
+
+/**
+ * Write a description of AverageTempOfFile here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+
+import edu.duke.*;
+import org.apache.commons.csv.*;
+import java.io.*;
+
+public class AverageTempOfFile {
+    public double AvgTempInFile (CSVParser parser) {
+        double Total = 0;
+        int Count = 0;
+        for ( CSVRecord currentRow : parser) {
+            Total = Total + Double.parseDouble( currentRow.get("TemperatureF"));
+            Count = Count +1;
+        }
+        double AvgTemp = Total/Count;
+        return AvgTemp;
+    }
+    
+    public void testAvgTempInDay () {
+        FileResource fr = new FileResource ();
+        double AverageTemp = AvgTempInFile(fr.getCSVParser());
+        System.out.println ("The average temperature is  " + AverageTemp);
+    }
+}
+
+
+*************************END**********************************************************************
+
+--------------------------------------------------------------------------------------------------
+                                     THE AVERAGE TEMPERATURE OF MANY FILES         
+--------------------------------------------------------------------------------------------------
+
+package FirstCSVExample;
+
+
+/**
+ * Write a description of AverageTempOfManyFiles here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+import edu.duke.*;
+import org.apache.commons.csv.*;
+import java.io.*;
+
+public class AverageTempOfManyFiles {
+
+       
+    public double AvgTempInFile (CSVParser parser) {
+        double Total = 0;
+        int Count = 0;
+        for ( CSVRecord currentRow : parser) {
+            Total = Total + Double.parseDouble( currentRow.get("TemperatureF"));
+            Count = Count +1;
+        }
+        double AvgTemp = Total/Count;
+        return AvgTemp;
+    }
+    
+    public double AvgTempInManyFile () {
+        int count = 0;
+        double TotalTemp = 0;
+        DirectoryResource dr = new DirectoryResource();
+        for (File f : dr.selectedFiles()) {
+            FileResource fr = new FileResource(f);
+            double CurrFileAvgTemp = AvgTempInFile(fr.getCSVParser());
+            System.out.println ("The average temperature of the file  " + f.getName() + "  is  " + CurrFileAvgTemp);
+            TotalTemp = CurrFileAvgTemp + TotalTemp;
+            count = count+1;
+        }
+        double AvgTemp = TotalTemp/count;
+        return AvgTemp;
+    }
+    
+    public void testAvgTempInManyDay () {
+        double AverageTemp = AvgTempInManyFile();
+        System.out.println ("The average temperature is  " + AverageTemp);
+    }
+}
+
+
+*************************END**********************************************************************
+
+--------------------------------------------------------------------------------------------------
+                           AVERAGE TEMPERATURE WITH HIGH HUMIDITY OF MANY DAYS (UNCOMPLETE)                   
+--------------------------------------------------------------------------------------------------
+
+package FirstCSVExample;
+
+
+/**
+ * Write a description of AverageTempWithHighHumidity here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+import edu.duke.*;
+import org.apache.commons.csv.*;
+import java.io.*;
+
+public class AverageTempWithHighHumidity {
+    public CSVRecord gethighestInFile(CSVRecord curr, CSVRecord highHum) {
+        int currhum = Integer.parseInt(curr.get("Humidity"));
+        double currtemp = Double.parseDouble(curr.get("TemperatureF"));
+        int count = 0;
+        double total = 0;
+        if (currhum >= 80) {
+             total = currtemp + total;
+             count = count + 1;
+        }
+        
+        return lowHum;
+    }
+    
+    public CSVRecord highestHumidityInFile(CSVParser parser) {
+        CSVRecord highestSoFar = null;
+        for (CSVRecord currRow : parser) {
+            highestSoFar = gethighestInFile(currRow, highestSoFar);
+        }
+        return highestSoFar;
+    }
+    
+        public CSVRecord highestHumidityInManyDays () {
+        CSVRecord highestHum = null;
+        DirectoryResource dr = new DirectoryResource();
+        for (File f : dr.selectedFiles()) {
+            FileResource fr = new FileResource(f);
+            CSVRecord currFileHum = highestHumidityInFile(fr.getCSVParser());
+            lowestHum = getLowestOfTwo(currFileHum, lowestHum);
+            System.out.println("The lowest humidity was  " + currFileHum.get("Humidity") + "   of file  " + f.getName() +" at  " +currFileHum.get("DateUTC"));
+        }
+        return lowestHum;
+    }
+            
+    
+    public void testAvgTempWithHighHum () {
+        CSVRecord highestHumidity = highestHumidityInManyDays();
+        System.out.println("The lowest humidity of all files was " + lowestHumidity.get("Humidity") + " at  " +
+                            lowestHumidity.get("TimeEST") + "  " +lowestHumidity.get("DateUTC"));
+    } 
+    
+}
+
+
+*************************END**********************************************************************
+
+--------------------------------------------------------------------------------------------------
+                               THE AVERAGE TEMPERATURE WITH HIGHEST HUMIDITY (IN A FILE)               
+--------------------------------------------------------------------------------------------------
+
+package FirstCSVExample;
+
+
+/**
+ * Write a description of AverageTempWithHighHumidity here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+import edu.duke.*;
+import org.apache.commons.csv.*;
+import java.io.*;
+
+public class AverageTempWithHighHumidity {
+    
+    public double highestHumidityInFile() {
+        int count = 0;
+        double total = 0;
+        FileResource fr = new FileResource();
+        CSVParser parser = fr.getCSVParser();
+        for (CSVRecord currRow : parser) {
+            int currhum = Integer.parseInt(currRow.get("Humidity"));
+            double currtemp = Double.parseDouble(currRow.get("TemperatureF"));
+            if (currhum >= 80) {
+                total = currtemp + total;
+                count = count + 1;
+                System.out.println("The current temperature is  " + currtemp + "  at the humidity  " + currhum ); 
+              }
+        }
+        double AvgTemp = total / count;
+        return AvgTemp;
+    }
+
+    public void testAvgTempWithHighHum () {
+        double AverageTemp = highestHumidityInFile();
+        System.out.println("The average temperaure with highest humidity (80) is   " + AverageTemp ); 
+    } 
+    
+}
+
+
+*************************END**********************************************************************
+
+--------------------------------------------------------------------------------------------------
+                                              
+--------------------------------------------------------------------------------------------------
